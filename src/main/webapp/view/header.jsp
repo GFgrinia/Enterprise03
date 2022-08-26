@@ -15,7 +15,7 @@
         } else {
             request.setAttribute("logState", "Log-in");
             request.setAttribute("link", "\"/site_name/login\"");
-            request.setAttribute("greeting-message", "You are not logged-in.");
+            request.setAttribute("greeting-message", "You are not logged-in!");
             request.setAttribute("displayed-name", "");
         }
     %>

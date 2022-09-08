@@ -7,22 +7,22 @@
 
   <servlet>
     <servlet-name>hello</servlet-name>
-    <servlet-class>com.academy.controller.servlets.HelloServlet</servlet-class>
+    <servlet-class>com.academy.controller.HelloServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>login</servlet-name>
-    <servlet-class>com.academy.controller.servlets.LoginServlet</servlet-class>
+    <servlet-class>com.academy.controller.LoginServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>logout</servlet-name>
-    <servlet-class>com.academy.controller.servlets.LogoutServlet</servlet-class>
+    <servlet-class>com.academy.controller.LogoutServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>profile</servlet-name>
-    <servlet-class>com.academy.controller.servlets.ProfileServlet</servlet-class>
+    <servlet-class>com.academy.controller.ProfileServlet</servlet-class>
   </servlet>
 
 

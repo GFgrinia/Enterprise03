@@ -1,6 +1,5 @@
-package com.academy.controller.servlets;
+package com.academy.controller;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -12,13 +11,9 @@ public class LogoutServlet extends HttpServlet {
 
         // Clear session user
         HttpSession session = request.getSession();
-        session.setAttribute("user", null);
-
+        session.invalidate();
 
         // Display main site page after Logging out
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-        requestDispatcher.forward(request, response);
-
-
+        response.sendRedirect("/site_name");
     }
 }

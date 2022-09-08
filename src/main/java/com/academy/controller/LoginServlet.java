@@ -1,5 +1,7 @@
-package com.academy.controller.servlets;
+package com.academy.controller;
 
+import com.academy.manager.DataBaseManager;
+import com.academy.model.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,33 +15,30 @@ public class LoginServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
-        // TODO find user and password in UserDB
-
-        // Hardcode for single user
-        if ("username".equals(username) && "password".equals(password)) {
-            request.setAttribute("name", username);
+        User userEntity = DataBaseManager.selectUser(username);
 
 
+        if (userEntity != null && userEntity.getPassword().equals(password)) {
             // Add Attribute to whole session
             HttpSession session = request.getSession();
-            session.setAttribute("user", username);
+            session.setAttribute("userEntity", userEntity);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("hello.jsp");
-            requestDispatcher.forward(request, response);
+            // If user defined we redirect him to hello page
+            response.sendRedirect("/site_name/hello");
 
         } else {
-
             // Processing wrong credentials
             request.setAttribute("message", "Incorrect password or username!!!");
-            RequestDispatcher req = request.getRequestDispatcher("loginPage.jsp");
-            req.forward(request, response);
+            request.setAttribute("page_title", "Log-in");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("loginPage.jsp");
+            requestDispatcher.forward(request, response);
         }
     }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.setAttribute("page_title", "Log-in");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("loginPage.jsp");
         requestDispatcher.forward(request, response);
 
